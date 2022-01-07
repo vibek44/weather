@@ -17,7 +17,7 @@ function App() {
 
   const handleClick=(searchcity)=>{
    
-    axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD&q=${searchcity}`)
+    axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD&q=${searchcity}`)
     .then(res=> {
       console.log(res.data);
        setCityKey(res.data[0].Key)
@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(()=>{
-    axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${citykey}?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD`)
+    axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${citykey}?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD`)
     .then(res=> {
      console.log(res.data)
      setCityWeather(res.data)
