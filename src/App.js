@@ -21,7 +21,7 @@ function App() {
     .then(res=> {
       console.log(res.data);
        setCityKey(res.data[0].Key)
-       setCountryId(res.data[0].Country.ID)
+       setCountryId(res.data[0].Country.EnglishName)
     })
    
   }
