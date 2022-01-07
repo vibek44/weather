@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
+import Button from './components/button';
+import Weather from './components/weather';
+
 
 function App() {
+  const[cityweather,setCityWeather]=useState(undefined)
+  const [citykey, setCityKey]=useState('')
+  const [searchcity, setSearchCity]=useState('')
+  const [countryid, setCountryId]=useState('')
+  
+  const handleSearch=(e)=>{
+    setSearchCity(e.target.value)
+  
+  }
+
+  const handleClick=(searchcity)=>{
+   
+    axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD&q=${searchcity}`)
+    .then(res=> {
+      console.log(res.data);
+       setCityKey(res.data[0].Key)
+       setCountryId(res.data[0].Country.ID)
+    })
+   
+  }
+
+  useEffect(()=>{
+    axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${citykey}?apikey=31FoJs2LJfcrP0iEAvvvECwjU2swTOJD`)
+    .then(res=> {
+     console.log(res.data)
+     setCityWeather(res.data)
+    })
+  },[citykey])
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <h1>Weather app </h1>
+      <div><input type="text" value={searchcity} onChange={handleSearch} placeholder="Enter city name"/>
+      <Button handleClick={handleClick} city={searchcity}/></div>
+       {cityweather && <Weather weather={cityweather} countryid={countryid} city={searchcity}/>}
+       
+
+      
     </div>
   );
 }
