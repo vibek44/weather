@@ -8,7 +8,7 @@ function App() {
   const[cityweather,setCityWeather]=useState(undefined)
   const [citykey, setCityKey]=useState('')
   const [searchcity, setSearchCity]=useState('')
-  const [countryid, setCountryId]=useState('')
+  const [countryname, setCountryName]=useState('')
   
   const handleSearch=(e)=>{
     setSearchCity(e.target.value)
@@ -21,7 +21,7 @@ function App() {
     .then(res=> {
       console.log(res.data);
        setCityKey(res.data[0].Key)
-       setCountryId(res.data[0].Country.EnglishName)
+       setCountryName(res.data[0].Country.EnglishName)
     })
    
   }
@@ -39,7 +39,7 @@ function App() {
       <h1>Weather app </h1>
       <div><input type="text" value={searchcity} onChange={handleSearch} placeholder="Enter city name"/>
       <Button handleClick={handleClick} city={searchcity}/></div>
-       {cityweather && <Weather weather={cityweather} countryid={countryid} city={searchcity}/>}
+       {cityweather && <Weather weather={cityweather} country={countryname} city={searchcity}/>}
        
 
       
