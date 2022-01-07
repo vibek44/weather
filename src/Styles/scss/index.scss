@@ -1,0 +1,11 @@
+@use './base';
+@use './app';
+@use './button';
+@use './weather';
+
+
+
+body{
+    background-color:rgba(base.$primary-color,0.5);
+    width:100%;
+   }

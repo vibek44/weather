@@ -1,0 +1,9 @@
+@use './base';
+
+.weather {
+    width:25%;
+    border:solid;
+    background-color: rgb(216, 216, 226);
+    
+}
+p{margin-left:base.$l-size}

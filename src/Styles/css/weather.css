@@ -1,0 +1,9 @@
+.weather {
+  width: 25%;
+  border: solid;
+  background-color: #d8d8e2;
+}
+
+p {
+  margin-left: 4.5em;
+}

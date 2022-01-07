@@ -1,0 +1,26 @@
+.main-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  row-gap: 2.5em;
+}
+
+.button {
+  background-color: #9c9da5;
+  border-radius: solid, 1px;
+}
+
+.weather {
+  width: 25%;
+  border: solid;
+  background-color: #d8d8e2;
+}
+
+p {
+  margin-left: 4.5em;
+}
+
+body {
+  background-color: rgba(204, 221, 255, 0.5);
+  width: 100%;
+}
